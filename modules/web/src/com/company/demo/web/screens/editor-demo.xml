@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="com.company.demo.web.screens.EditorDemo"
+        messagesPack="com.company.demo.web.screens">
+    <dsContext>
+        <collectionDatasource id="usersDs"
+                              allowCommit="false"
+                              class="com.haulmont.cuba.security.entity.User"
+                              view="user.browse">
+            <query>
+                <![CDATA[ select u from sec$User u ]]>
+            </query>
+        </collectionDatasource>
+        <collectionDatasource id="groupsDs"
+                              class="com.haulmont.cuba.security.entity.Group">
+            <query>
+                <![CDATA[select e from sec$Group e]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <tabSheet id="tabSheet"
+                  height="100%">
+            <tab id="bufferedTab"
+                 caption="Buffered Editor"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <dataGrid id="bufferedDataGrid"
+                          datasource="usersDs"
+                          editorEnabled="true"
+                          height="100%"
+                          settingsEnabled="false"
+                          width="100%">
+                    <columns>
+                        <column property="name"/>
+                        <column property="group"/>
+                        <column property="active"/>
+                        <column property="email"/>
+                        <column property="language"/>
+                    </columns>
+                </dataGrid>
+            </tab>
+            <tab id="unbufferedTab"
+                 caption="Unbuffered Editor"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <dataGrid id="unbufferedDataGrid"
+                          datasource="usersDs"
+                          editorBuffered="false"
+                          editorEnabled="true"
+                          height="100%"
+                          settingsEnabled="false"
+                          width="100%">
+                    <columns>
+                        <column property="name"/>
+                        <column property="group"/>
+                        <column property="active"/>
+                        <column property="email"/>
+                        <column property="language"/>
+                    </columns>
+                </dataGrid>
+            </tab>
+            <tab id="customFieldTab"
+                 caption="Custom Editor Fields"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <dataGrid id="customFieldDataGrid"
+                          datasource="usersDs"
+                          editorEnabled="true"
+                          height="100%"
+                          settingsEnabled="false"
+                          width="100%">
+                    <columns>
+                        <column property="name"/>
+                        <column property="group"/>
+                        <column property="active"/>
+                        <column property="email"/>
+                        <column property="language"/>
+                    </columns>
+                </dataGrid>
+            </tab>
+            <tab id="notEditableTab"
+                 caption="Not Editable Column"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <dataGrid id="notEditableColumnDataGrid"
+                          datasource="usersDs"
+                          editorEnabled="true"
+                          height="100%"
+                          settingsEnabled="false"
+                          width="100%">
+                    <columns>
+                        <column property="name"/>
+                        <column property="group"
+                                editable="false"/>
+                        <column property="active"/>
+                        <column property="email"/>
+                        <column property="language"/>
+                    </columns>
+                </dataGrid>
+            </tab>
+            <tab id="customCaptionsTab"
+                 caption="Custom Captions Column"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <dataGrid id="customCaptionsDataGrid"
+                          datasource="usersDs"
+                          editorEnabled="true"
+                          editorCancelCaption="Close"
+                          editorSaveCaption="Save"
+                          height="100%"
+                          settingsEnabled="false"
+                          width="100%">
+                    <columns>
+                        <column property="name"/>
+                        <column property="group"/>
+                        <column property="active"/>
+                        <column property="email"/>
+                        <column property="language"/>
+                    </columns>
+                </dataGrid>
+            </tab>
+            <tab id="listenersTab"
+                 caption="Listeners"
+                 margin="true,false,false,false"
+                 spacing="true">
+                <dataGrid id="listenersDataGrid"
+                          datasource="usersDs"
+                          editorEnabled="true"
+                          height="100%"
+                          settingsEnabled="false"
+                          width="100%">
+                    <columns>
+                        <column property="name"/>
+                        <column property="group"/>
+                        <column property="active"/>
+                        <column property="email"/>
+                        <column property="language"/>
+                    </columns>
+                </dataGrid>
+            </tab>
+        </tabSheet>
+    </layout>
+</window>
